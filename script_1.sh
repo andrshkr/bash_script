@@ -9,6 +9,13 @@ ps "${PID_MY_SHELL}" | tail -1 | cut -b 29-38
 
 
 cd ${DIR_} 
-file $( ls -LA -1 ${DIR_}) 
+
+if [ -z $2 ]
+	then
+	file $( ls -LA -1 ${DIR_}) 
+else
+	file $( ls -LA -1 ${DIR_})  | grep $2: 
+fi
+
 
 echo END!
